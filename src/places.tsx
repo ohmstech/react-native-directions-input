@@ -6,7 +6,7 @@ import {
   TextInput,
   Text,
   FlatList,
-  type StyleSheetProperties
+  type StyleSheetProperties,
 } from 'react-native';
 import { debounce } from 'lodash';
 import GooglePlacesApi, {
@@ -226,7 +226,13 @@ const SuggestionItem: React.FC<{
 
   return (
     <View>
-      <TouchableOpacity style={{ ...styles.suggestion, ...style }} onPress={handlePress}>
+      <TouchableOpacity
+        style={{
+          ...styles.suggestion,
+          ...style,
+        }}
+        onPress={handlePress}
+      >
         <SvgXml xml={LocationXml} width={16} height={16} fill={'black'} />
         <Text style={styles.suggestionText}>
           {suggestion.placePrediction?.text.text ?? ''}
