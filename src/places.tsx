@@ -200,7 +200,7 @@ const Suggestions: React.FC<{
     ({ item }: { item: PlaceSuggestions[0] }) => (
       <SuggestionItem suggestion={item} onPress={onPress} style={style} />
     ),
-    [onPress]
+    [onPress, style]
   );
   return (
     <View style={styles.flatList}>
