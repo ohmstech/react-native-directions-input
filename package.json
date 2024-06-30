@@ -74,8 +74,12 @@
     "typescript": "^5.5.2"
   },
   "peerDependencies": {
+    "axios": "^1.7.2",
+    "lodash": "^4.17.21",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-outside-press": "^1.2.2",
+    "react-native-svg": "^15.3.0"
   },
   "jest": {
     "preset": "react-native",
@@ -149,12 +153,6 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "axios": "^1.7.2",
-    "lodash": "^4.17.21",
-    "react-native-outside-press": "^1.2.2",
-    "react-native-svg": "^15.3.0"
   },
   "packageManager": "yarn@4.3.1"
 }
