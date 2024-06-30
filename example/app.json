@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "example",
-    "slug": "example",
+    "slug": "initial-directions-input-test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.donsn.initialdirectionsinputtest"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b7780f46-b7d1-4db8-b17c-5e4f34959939"
+      }
+    },
+    "owner": "donsn"
   }
 }
