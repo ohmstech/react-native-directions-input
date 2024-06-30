@@ -155,5 +155,6 @@
     "lodash": "^4.17.21",
     "react-native-outside-press": "^1.2.2",
     "react-native-svg": "^15.3.0"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }

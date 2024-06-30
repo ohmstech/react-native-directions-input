@@ -6,6 +6,7 @@ import {
   TextInput,
   Text,
   FlatList,
+  type StyleSheetProperties
 } from 'react-native';
 import { debounce } from 'lodash';
 import GooglePlacesApi, {
@@ -19,6 +20,8 @@ type DirectionsInputProps = {
   apiKey: string;
   onOriginChange: (place: GooglePlace) => void;
   onDestinationChange: (place: GooglePlace) => void;
+  inputStyle?: StyleSheetProperties;
+  suggestionStyle?: StyleSheetProperties;
 };
 /**
  * Google Places Directions Input
@@ -27,6 +30,8 @@ type DirectionsInputProps = {
  */
 export const DirectionsInput: React.FC<DirectionsInputProps> = ({
   apiKey,
+  inputStyle,
+  suggestionStyle,
   onOriginChange,
   onDestinationChange,
 }) => {
@@ -99,6 +104,8 @@ export const DirectionsInput: React.FC<DirectionsInputProps> = ({
           suggestions={originSuggestions}
           onCompletion={(placeId) => handleCompletion(placeId, true)}
           Icon={StartIcon}
+          style={inputStyle}
+          suggestionStyle={suggestionStyle}
         />
         <VerticalLine />
         <AutoCompleteInput
@@ -107,7 +114,9 @@ export const DirectionsInput: React.FC<DirectionsInputProps> = ({
           onChangeText={(text) => handleInputChange(text, false)}
           suggestions={destinationSuggestions}
           onCompletion={(placeId) => handleCompletion(placeId, false)}
+          style={inputStyle}
           Icon={DestinationIcon}
+          suggestionStyle={suggestionStyle}
         />
       </View>
     </EventProvider>
@@ -121,11 +130,15 @@ type AutoCompleteInputProps = {
   onCompletion: (placeId: string) => void;
   onChangeText: (text: string) => void;
   Icon?: React.FC | null;
+  style?: StyleSheetProperties;
+  suggestionStyle?: StyleSheetProperties;
 };
 
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   placeholder,
   value,
+  style,
+  suggestionStyle,
   onChangeText,
   suggestions,
   onCompletion,
@@ -159,7 +172,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
           {Icon && <Icon />}
           <TextInput
             ref={inputRef}
-            style={styles.input}
+            style={{ ...styles.input, ...style }}
             placeholder={placeholder}
             value={value}
             onChangeText={onChangeText}
@@ -169,6 +182,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         {isFocused && suggestions.length > 0 && (
           <Suggestions
             suggestions={suggestions}
+            style={suggestionStyle}
             onPress={handleSuggestionPress}
           />
         )}
@@ -179,11 +193,12 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
 const Suggestions: React.FC<{
   suggestions: PlaceSuggestions;
+  style?: StyleSheetProperties;
   onPress: (placeId: string) => void;
-}> = ({ suggestions, onPress }) => {
+}> = ({ suggestions, onPress, style }) => {
   const ListRenderItem = useCallback(
     ({ item }: { item: PlaceSuggestions[0] }) => (
-      <SuggestionItem suggestion={item} onPress={onPress} />
+      <SuggestionItem suggestion={item} onPress={onPress} style={style} />
     ),
     [onPress]
   );
@@ -200,8 +215,9 @@ const Suggestions: React.FC<{
 
 const SuggestionItem: React.FC<{
   suggestion: PlaceSuggestions[0];
+  style?: StyleSheetProperties;
   onPress: (placeId: string) => void;
-}> = ({ suggestion, onPress }) => {
+}> = ({ suggestion, onPress, style }) => {
   const handlePress = useCallback(() => {
     if (suggestion.placePrediction?.placeId) {
       onPress(suggestion.placePrediction.placeId);
@@ -210,7 +226,7 @@ const SuggestionItem: React.FC<{
 
   return (
     <View>
-      <TouchableOpacity style={styles.suggestion} onPress={handlePress}>
+      <TouchableOpacity style={{ ...styles.suggestion, ...style }} onPress={handlePress}>
         <SvgXml xml={LocationXml} width={16} height={16} fill={'black'} />
         <Text style={styles.suggestionText}>
           {suggestion.placePrediction?.text.text ?? ''}
