@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-awesome-places-input": ["./src/index"]
+      "react-native-directions-input": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

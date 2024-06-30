@@ -1,17 +1,17 @@
-# react-native-awesome-places-input
+# react-native-directions-input
 
-Places Input (Google)
+Google Places (API)
 
 ## Installation
 
 ```sh
-npm install react-native-awesome-places-input
+npm install react-native-directions-input
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-awesome-places-input';
+import { multiply } from 'react-native-directions-input';
 
 // ...
 
