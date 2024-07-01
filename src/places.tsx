@@ -253,6 +253,7 @@ const styles = StyleSheet.create({
   input: {
     minHeight: 48,
     borderWidth: 1,
+    color: '#000',
     borderColor: '#ddd',
     width: '100%',
     borderRadius: 8,
@@ -262,6 +263,7 @@ const styles = StyleSheet.create({
   flatList: {
     width: '100%',
     padding: 8,
+    backgroundColor: '#fff',
   },
   suggestion: {
     padding: 8,

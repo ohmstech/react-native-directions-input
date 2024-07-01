@@ -1,21 +1,29 @@
 # react-native-directions-input
 
-Google Places (API)
+Implements The New Google Places (API)
 
 ## Installation
-
+With npm
 ```sh
 npm install react-native-directions-input
+```
+With yarn
+```sh
+yarn add react-native-directions-input
+```
+With expo
+```sh
+expo install react-native-directions-input
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-directions-input';
+import { DirectionsInput } from 'react-native-directions-input';
 
-// ...
-
-const result = await multiply(3, 7);
+<DirectionsInput
+  apiKey="YOUR_API_KEY"
+/>
 ```
 
 ## Contributing
@@ -26,6 +34,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 MIT
 
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

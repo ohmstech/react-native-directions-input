@@ -246,7 +246,75 @@ export interface GooglePlace {
     wheelchairBrailleMenu: boolean;
   };
 }
-
+/**
+ * Fields to return for place details. Use * to get all fields.
+ */
+export type PlacesFields =
+  | Array<
+      | 'id'
+      | 'displayName'
+      | 'location'
+      | 'formattedAddress'
+      | 'addressComponents'
+      | 'plusCode'
+      | 'viewport'
+      | 'rating'
+      | 'googleMapsUri'
+      | 'websiteUri'
+      | 'reviews'
+      | 'regularOpeningHours'
+      | 'photos'
+      | 'adrFormatAddress'
+      | 'businessStatus'
+      | 'priceLevel'
+      | 'attributions'
+      | 'iconMaskBaseUri'
+      | 'iconBackgroundColor'
+      | 'currentOpeningHours'
+      | 'currentSecondaryOpeningHours'
+      | 'regularSecondaryOpeningHours'
+      | 'editorialSummary'
+      | 'paymentOptions'
+      | 'parkingOptions'
+      | 'subDestinations'
+      | 'fuelOptions'
+      | 'evChargeOptions'
+      | 'generativeSummary'
+      | 'areaSummary'
+      | 'utcOffsetMinutes'
+      | 'userRatingCount'
+      | 'takeout'
+      | 'delivery'
+      | 'dineIn'
+      | 'curbsidePickup'
+      | 'reservable'
+      | 'servesBreakfast'
+      | 'servesLunch'
+      | 'servesDinner'
+      | 'servesBeer'
+      | 'servesWine'
+      | 'servesBrunch'
+      | 'servesVegetarianFood'
+      | 'outdoorSeating'
+      | 'liveMusic'
+      | 'menuForChildren'
+      | 'servesCocktails'
+      | 'servesDessert'
+      | 'servesCoffee'
+      | 'goodForChildren'
+      | 'allowsDogs'
+      | 'restroom'
+      | 'goodForGroups'
+      | 'goodForWatchingSports'
+      | 'accessibilityOptions'
+    >
+  | ['*'];
+/**
+ * Base class for Google Places API. This class provides methods to interact with Google Places API.
+ * You can use this class to get place suggestions and place details, probably for your own use case.
+ * @param API_KEY - Google Places API Key
+ *
+ */
 class GooglePlacesApi {
   /**
    *
@@ -274,14 +342,14 @@ class GooglePlacesApi {
   }
   /**
    * Get place details by placeId. Returns only the fields specified in the fields parameter.
-   * Default fields are: id, displayName, location. Use * to get all fields.
+   * Default fields are: id, display name, location and formatted address. Use * to get all fields.
    * @param placeId - Place ID
    * @param fields - Array of fields to return
    * @returns
    */
   async getPlaceDetails(
     placeId: string,
-    fields: string[] = ['id', 'displayName', 'location', 'formattedAddress']
+    fields: PlacesFields = ['id', 'displayName', 'location', 'formattedAddress']
   ) {
     const response = await this.client.get<GooglePlace>(`/${placeId}`, {
       headers: {
