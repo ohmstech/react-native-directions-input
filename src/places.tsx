@@ -20,8 +20,8 @@ type DirectionsInputProps = {
   apiKey: string;
   onOriginChange: (place: GooglePlace) => void;
   onDestinationChange: (place: GooglePlace) => void;
-  inputStyle?: StyleSheetProperties;
-  suggestionStyle?: StyleSheetProperties;
+  inputStyle?: Partial<StyleSheetProperties>;
+  suggestionStyle?: Partial<StyleSheetProperties>;
 };
 /**
  * Google Places Directions Input
@@ -130,8 +130,8 @@ type AutoCompleteInputProps = {
   onCompletion: (placeId: string) => void;
   onChangeText: (text: string) => void;
   Icon?: React.FC | null;
-  style?: StyleSheetProperties;
-  suggestionStyle?: StyleSheetProperties;
+  style?: Partial<StyleSheetProperties>;
+  suggestionStyle?: Partial<StyleSheetProperties>;
 };
 
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
@@ -193,7 +193,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
 const Suggestions: React.FC<{
   suggestions: PlaceSuggestions;
-  style?: StyleSheetProperties;
+  style?: Partial<StyleSheetProperties>;
   onPress: (placeId: string) => void;
 }> = ({ suggestions, onPress, style }) => {
   const ListRenderItem = useCallback(
@@ -215,7 +215,7 @@ const Suggestions: React.FC<{
 
 const SuggestionItem: React.FC<{
   suggestion: PlaceSuggestions[0];
-  style?: StyleSheetProperties;
+  style?: Partial<StyleSheetProperties>;
   onPress: (placeId: string) => void;
 }> = ({ suggestion, onPress, style }) => {
   const handlePress = useCallback(() => {
