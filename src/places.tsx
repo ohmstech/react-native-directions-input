@@ -6,7 +6,7 @@ import {
   TextInput,
   Text,
   FlatList,
-  type StyleSheetProperties,
+  type StyleProp,
 } from 'react-native';
 import { debounce } from 'lodash';
 import GooglePlacesApi, {
@@ -20,8 +20,8 @@ type DirectionsInputProps = {
   apiKey: string;
   onOriginChange: (place: GooglePlace) => void;
   onDestinationChange: (place: GooglePlace) => void;
-  inputStyle?: Partial<StyleSheetProperties>;
-  suggestionStyle?: Partial<StyleSheetProperties>;
+  inputStyle?: Partial<StyleProp<TextInput>>;
+  suggestionStyle?: Partial<StyleProp<View>>;
 };
 /**
  * Google Places Directions Input
@@ -130,8 +130,8 @@ type AutoCompleteInputProps = {
   onCompletion: (placeId: string) => void;
   onChangeText: (text: string) => void;
   Icon?: React.FC | null;
-  style?: Partial<StyleSheetProperties>;
-  suggestionStyle?: Partial<StyleSheetProperties>;
+  style?: Partial<StyleProp<TextInput>>;
+  suggestionStyle?: Partial<StyleProp<View>>;
 };
 
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
@@ -193,7 +193,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
 const Suggestions: React.FC<{
   suggestions: PlaceSuggestions;
-  style?: Partial<StyleSheetProperties>;
+  style?: Partial<StyleProp<View>>;
   onPress: (placeId: string) => void;
 }> = ({ suggestions, onPress, style }) => {
   const ListRenderItem = useCallback(
@@ -215,7 +215,7 @@ const Suggestions: React.FC<{
 
 const SuggestionItem: React.FC<{
   suggestion: PlaceSuggestions[0];
-  style?: Partial<StyleSheetProperties>;
+  style?: Partial<StyleProp<View>>;
   onPress: (placeId: string) => void;
 }> = ({ suggestion, onPress, style }) => {
   const handlePress = useCallback(() => {
