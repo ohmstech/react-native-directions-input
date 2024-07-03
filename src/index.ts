@@ -7,3 +7,9 @@ export {
 } from './api.new';
 
 export { GooglePlacesApi };
+export {
+  reverseGeocode,
+  geocodeAddress,
+  type ReverseGeocodeResponse,
+  type GeocodeResponse,
+} from './api.geocode';
