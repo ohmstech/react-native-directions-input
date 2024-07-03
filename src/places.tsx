@@ -174,6 +174,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
             ref={inputRef}
             style={{ ...styles.input, ...style }}
             placeholder={placeholder}
+            placeholderTextColor={'#999'}
             value={value}
             onChangeText={onChangeText}
             onFocus={handleFocus}
